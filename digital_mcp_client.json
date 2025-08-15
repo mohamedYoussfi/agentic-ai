@@ -1,0 +1,116 @@
+{
+  "name": "digital mcp client",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "04a83a84-5e14-45f6-b75a-a3987033307e",
+      "name": "When chat message received",
+      "webhookId": "2ccdf267-7049-4efd-9877-ff75b442c0aa"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "d84cd923-8108-4df4-9f5e-dcb107f41fe6",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        140,
+        200
+      ],
+      "id": "dd0d455b-fadb-4164-8412-2bbe82a053f8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "GI4LmSOvxkuUgsgL",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "http://192.168.1.11:5678/mcp-test/522d84df-b960-42af-833b-d04a2e7c8c07/sse"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        500,
+        180
+      ],
+      "id": "2a7ccb94-ca61-46b6-81a3-0c96179d1d27",
+      "name": "MCP Client"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2993ad26-09bf-4263-9b8e-23df9cb96be4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c5cc21b2991f6685a86a9c5f553944a0172c8df42d610fb043154805e08510ea"
+  },
+  "id": "PQx17ljn8yo4XyVW",
+  "tags": []
+}

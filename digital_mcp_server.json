@@ -1,0 +1,133 @@
+{
+  "name": "digital-mcp-server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "522d84df-b960-42af-833b-d04a2e7c8c07"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -100
+      ],
+      "id": "a8b5c6fb-a318-413b-abf4-c20a80ff7b7f",
+      "name": "MCP Server Trigger",
+      "webhookId": "522d84df-b960-42af-833b-d04a2e7c8c07"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Consulter la liste de voitures sélectionnées",
+        "documentId": {
+          "__rl": true,
+          "value": "1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0",
+          "mode": "list",
+          "cachedResultName": "vehicules",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1163423040,
+          "mode": "list",
+          "cachedResultName": "vehicules",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0/edit#gid=1163423040"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Selected",
+              "lookupValue": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -100,
+        120
+      ],
+      "id": "0dd72127-cc67-49a1-9fc0-07ea15e0432d",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Wn552YuMxt9nWv9d",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Consulter la liste des clients",
+        "documentId": {
+          "__rl": true,
+          "value": "1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0",
+          "mode": "list",
+          "cachedResultName": "vehicules",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1252237882,
+          "mode": "list",
+          "cachedResultName": "customers",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wNI8GCA4lXJ3QxOlcsddi6En49X76BU9iQvmbA6OPy0/edit#gid=1252237882"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        80,
+        120
+      ],
+      "id": "d8018cc0-a3dc-4344-abcd-dc5d4484d3fd",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Wn552YuMxt9nWv9d",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e4339ab8-2c26-4949-b3e4-d8f666112aa4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c5cc21b2991f6685a86a9c5f553944a0172c8df42d610fb043154805e08510ea"
+  },
+  "id": "9cjK50gMllXRKnYs",
+  "tags": []
+}
